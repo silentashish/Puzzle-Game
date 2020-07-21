@@ -8,6 +8,8 @@ target 'PuzzleGame' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
+
   target 'PuzzleGameTests' do
     inherit! :complete
     # Pods for testing
