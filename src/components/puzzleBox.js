@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import {secondaryColor} from '../assets';
+import { colors } from '../utils'
 
 const PuzzleBox = (props) => {
   const {number, allletter} = props;
@@ -45,13 +46,13 @@ const _styles = ({number}) => {
     boxContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      height: '320@s',
+      height: '250@s',
     },
     itemGrid: {
-      borderWidth: '2@s',
-      borderColor: secondaryColor,
-      height: `${100 * (3 / number)}@s`,
-      width: `${100 * (3 / number)}@s`,
+      borderWidth: '1@s',
+      borderColor: colors.secondaryColor,
+      height: '80@ms',
+      width: '80@ms',
       justifyContent: 'center',
       alignItems: 'center',
     },

@@ -6,7 +6,7 @@ import {secondaryColor} from '../assets';
 export default (props) => {
   const styles = _styles(props);
   return (
-    <TextInput style={styles.Container} placeholder="Enter Guess" {...props} />
+    <TextInput style={styles.Container} placeholder="Type word.." {...props} />
   );
 };
 

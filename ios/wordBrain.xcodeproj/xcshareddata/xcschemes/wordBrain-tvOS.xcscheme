@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "PuzzleGame-tvOS.app"
-               BlueprintName = "PuzzleGame-tvOS"
-               ReferencedContainer = "container:PuzzleGame.xcodeproj">
+               BuildableName = "wordBrain-tvOS.app"
+               BlueprintName = "wordBrain-tvOS"
+               ReferencedContainer = "container:wordBrain.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "PuzzleGame-tvOSTests.xctest"
-               BlueprintName = "PuzzleGame-tvOSTests"
-               ReferencedContainer = "container:PuzzleGame.xcodeproj">
+               BuildableName = "wordBrain-tvOSTests.xctest"
+               BlueprintName = "wordBrain-tvOSTests"
+               ReferencedContainer = "container:wordBrain.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "PuzzleGame-tvOS.app"
-            BlueprintName = "PuzzleGame-tvOS"
-            ReferencedContainer = "container:PuzzleGame.xcodeproj">
+            BuildableName = "wordBrain-tvOS.app"
+            BlueprintName = "wordBrain-tvOS"
+            ReferencedContainer = "container:wordBrain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "PuzzleGame-tvOS.app"
-            BlueprintName = "PuzzleGame-tvOS"
-            ReferencedContainer = "container:PuzzleGame.xcodeproj">
+            BuildableName = "wordBrain-tvOS.app"
+            BlueprintName = "wordBrain-tvOS"
+            ReferencedContainer = "container:wordBrain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

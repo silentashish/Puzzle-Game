@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, ToastAndroid} from 'react-native';
-import {PuzzleBox, TextInput, Button} from '../../components';
+import {View, Text, ScrollView, SafeAreaView} from 'react-native';
+import {PuzzleBox, TextInput, Button, AppHeader} from '../../components';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {levelOne, levelTwo, levelThree} from '../../data';
-import {primaryColor} from '../../assets';
+import { styles } from './styles'
+import { colors } from '../../utils';
+import { showToast } from '../../utils/showAlert';
 
 const TimeLimit = 60;
 const TotalLife = 3;
@@ -30,10 +32,7 @@ const LevelOneActivity = () => {
       // do action
       setProblemIndex((problemIndex) => problemIndex + 1);
       setTime(TimeLimit);
-      ToastAndroid.show(
-        `TimeOut, You fail to answer in time.`,
-        ToastAndroid.LONG,
-      );
+      showToast('TimeOut, You fail to answer in time.')
     }
   }, [time]);
 
@@ -54,10 +53,7 @@ const LevelOneActivity = () => {
   useEffect(() => {
     if (life === 0) {
       // do action
-      ToastAndroid.show(
-        `You Failed to answer at this level!`,
-        ToastAndroid.LONG,
-      );
+      showToast('You Failed to answer at this level!')
       setTime(TimeLimit);
       setProblemIndex((problemIndex) => problemIndex + 1);
       setLife(TotalLife);
@@ -85,18 +81,18 @@ const LevelOneActivity = () => {
   const handleCheck = () => {
     // if user didn't input anything ask to enter answer
     if (!input) {
-      return ToastAndroid.show(`Enter Answer!`, ToastAndroid.LONG);
+      showToast('Enter Answer!')
     }
     const caseInput = input.toLowerCase();
     //if answer is already set then inform user
     if (oldanswer.includes(caseInput)) {
       setInput('');
-      return ToastAndroid.show(`Already Added!`, ToastAndroid.LONG);
+      showToast('Already Added!')
     }
     // if user enter correct answer then remove item from solution and put this on old answer
     if (problemNow.solution.includes(caseInput)) {
       setInput('');
-      ToastAndroid.show(`Correct Answer`, ToastAndroid.LONG);
+      showToast('Correct Answer!', 'success');
       setProblemNow({
         ...problemNow,
         solution: problemNow.solution.filter((value) => {
@@ -109,38 +105,28 @@ const LevelOneActivity = () => {
         setLife((life) => life - 1);
         return;
       }
-      ToastAndroid.show(
-        `Wrong Answer, ${life - 1} attempt remain.`,
-        ToastAndroid.LONG,
-      );
+      showToast(`Wrong Answer, ${life - 1} attempt remain.`)
       setLife((life) => life - 1);
     }
   };
 
   return (
-    <View style={{backgroundColor: primaryColor, flex: 1}}>
+    <View style={styles.mainView}>
+      <SafeAreaView backgroundColor={colors.secondaryColor} opacity={0.95}/>
+      <AppHeader title="WordBrain" subTitle={`Level ${level}`}/>
       <ScrollView>
-        <Text style={{textAlign: 'center', fontSize: 30, margin: 10}}>
-          Level {level}
-        </Text>
-
-        <Text style={{textAlign: 'center', fontSize: 20, marginBottom: 8}}>
-          {problemIndex + 1} / 5
-        </Text>
+        <Text style={styles.problemIndex}>{problemIndex + 1} / 5</Text>
 
         <PuzzleBox {...problemNow} />
+        <Text style={styles.instruction}>Make words from the checkboard above and type in the Text Input. {`\n`}Press check button to check if you're right</Text>
 
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-          }}>
+          style={styles.timeLifeView}>
           <Time time={time} />
           <Life number={life} />
         </View>
-
+        
         <OldAnswer oldanswer={oldanswer} />
-
         <TextInput onChangeText={(val) => setInput(val)} value={input} />
 
         <Button onPress={handleCheck} />
@@ -160,45 +146,19 @@ const IconNew = ({name, disable}) => (
 
 const Time = ({time}) => (
   <View>
-    <Text
-      style={{
-        marginBottom: 5,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 20,
-      }}>
-      Time
-    </Text>
-
-    <Text style={{textAlign: 'center', fontSize: 25, marginBottom: 5}}>
-      {time}s
-    </Text>
+    <Text style={styles.timeText}>Time</Text>
+    <Text style={styles.timesText}>{time}s</Text>
   </View>
 );
 
 const OldAnswer = ({oldanswer}) => (
   <View
-    style={{
-      flexDirection: 'row',
-      paddingRight: 25,
-      paddingLeft: 25,
-      marginBottom: 15,
-    }}>
+    style={styles.oldAnswerView}>
     {oldanswer.length > 0
       ? oldanswer.map((item) => (
           <View
-            style={{
-              borderRadius: 10,
-              backgroundColor: '#a1a1a1',
-              justifyContent: 'center',
-              alignItems: 'center',
-              paddingRight: 10,
-              paddingLeft: 10,
-              paddingTop: 5,
-              paddingBottom: 5,
-              minWidth: 100,
-            }}>
-            <Text style={{fontSize: 20, textAlign: 'center'}}>{item}</Text>
+            style={styles.oldAnswerSubView}>
+            <Text style={styles.itemText}>{item}</Text>
           </View>
         ))
       : null}
@@ -207,22 +167,8 @@ const OldAnswer = ({oldanswer}) => (
 
 const Life = ({number}) => (
   <View>
-    <Text
-      style={{
-        marginBottom: 5,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 20,
-      }}>
-      Life
-    </Text>
-
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginBottom: 5,
-      }}>
+    <Text style={styles.lifeText}>Life</Text>
+    <View style={styles.heartView}>
       <IconNew name="heart" disable={number < 1} />
       <IconNew name="heart" disable={number < 2} />
       <IconNew name="heart" disable={number < 3} />
