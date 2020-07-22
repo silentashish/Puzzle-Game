@@ -71,7 +71,7 @@ const LevelOneActivity = () => {
   }, [problemIndex]);
 
   const GoToNextLevel = () => {
-    setLevel((level) => level + 1);
+    setLevel((level) => (level == 3 ? 1 : level + 1));
     setSuccess(true);
     setStopTimer(true);
   };
@@ -153,8 +153,10 @@ const LevelOneActivity = () => {
     return (
       <View style={styles.mainView}>
         <View style={styles.centerElement}>
-          <Text style={styles.bigText}>Level {level}</Text>
-          <Text style={styles.bigText}>Complete</Text>
+          <Text style={styles.bigText}>
+            {level === 1 ? `Game` : `Level ${level - 1}`}
+          </Text>
+          <Text style={styles.bigText}>Completed</Text>
           <View style={styles.animationBox}>
             <LottieView
               source={require('../../assets/Animations/success.json')}
@@ -168,7 +170,7 @@ const LevelOneActivity = () => {
               setSuccess(false);
               setStopTimer(false);
             }}>
-            Continue
+            {level === 1 ? 'Try Again' : 'Continue'}
           </Button>
         </View>
       </View>
