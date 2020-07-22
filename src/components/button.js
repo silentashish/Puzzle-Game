@@ -1,15 +1,15 @@
 import React from 'react';
-import {Text, TouchableHighlight} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import {ScaledSheet} from 'react-native-size-matters';
 import {secondaryColor, whiteColor} from '../assets';
 
 export default (props) => {
-  const {onPress} = props;
+  const {onPress, children} = props;
   const styles = _styles();
   return (
-    <TouchableHighlight style={styles.button} onPress={onPress}>
-      <Text style={styles.txt}>Check</Text>
-    </TouchableHighlight>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.txt}>{children}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -24,6 +24,8 @@ const _styles = () => {
       alignItems: 'center',
       marginTop: '10@vs',
       borderRadius: '4@ms',
+      paddingRight: '20@ms',
+      paddingLeft: '20@ms',
     },
     txt: {
       color: whiteColor,
