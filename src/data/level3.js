@@ -1,32 +1,32 @@
 export const levelThree = [
   {
     id: 31,
-    allletter: 'asdfghjkodhjuiondjujdbhij',
-    solution: ['fad', 'jok'],
+    allletter: 'gepplnooroatsalkaoilfmnci',
+    solution: ['raincoat', 'smoke', 'lollipop', 'fang'],
     number: 5,
   },
   {
     id: 32,
-    allletter: 'eyhduipmjopkhjueueidjhuhb',
-    solution: ['fad', 'jok'],
+    allletter: 'leitepipnrdceakboolouwkoh',
+    solution: ['woodpile', 'buckle', 'painter', 'hook'],
     number: 5,
   },
   {
     id: 33,
-    allletter: 'opmkjhucvtyhnjkodijhbgyhu',
-    solution: ['fad', 'jok'],
+    allletter: 'llvetbancegdainlohfesembr',
+    solution: ['fence', 'timber', 'handball', 'gloves'],
     number: 5,
   },
   {
     id: 34,
-    allletter: 'qwsxdcfvholknhjudhnbhujyg',
-    solution: ['fad', 'jok'],
+    allletter: 'tbrppelsepleodiviirluloes',
+    solution: ['period', 'olive', 'bullet', 'slippers'],
     number: 5,
   },
   {
     id: 35,
-    allletter: 'qolmkjhnbtyhbghjdhnjhuijd',
-    solution: ['fad', 'jok'],
+    allletter: 'gneatwiruerosolradnilfiot',
+    solution: ['toilet', 'dinosaur', 'earring', 'wolf'],
     number: 5,
   },
 ];

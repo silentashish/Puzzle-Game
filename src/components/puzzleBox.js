@@ -36,7 +36,7 @@ const Item = (props) => {
   const styles = _styles(props);
   return (
     <View style={styles.itemGrid}>
-      <Text style={styles.txtSize}>{children}</Text>
+      <Text style={styles.txtSize}>{children.toUpperCase()}</Text>
     </View>
   );
 };

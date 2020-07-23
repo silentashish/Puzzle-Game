@@ -1,32 +1,32 @@
 export const levelTwo = [
   {
     id: 21,
-    allletter: 'asdfghjkodhjuion',
-    solution: ['fad', 'jok'],
+    allletter: 'edhnlerobarrcott',
+    solution: ['table', 'record', 'north'],
     number: 4,
   },
   {
     id: 22,
-    allletter: 'eyhduipmjopkhjus',
-    solution: ['fad', 'jok'],
+    allletter: 'raofdalrobpuvooc',
+    solution: ['cupboard', 'oval', 'roof'],
     number: 4,
   },
   {
     id: 23,
-    allletter: 'opmkjhucvtyhnjko',
-    solution: ['fad', 'jok'],
+    allletter: 'barrntneareaksll',
+    solution: ['ask', 'lantern', 'barrel'],
     number: 4,
   },
   {
     id: 24,
-    allletter: 'qwsxdcfvholknhju',
-    solution: ['fad', 'jok'],
+    allletter: 'pleeeiepnahhcrts',
+    solution: ['sheep', 'earth', 'pencil'],
     number: 4,
   },
   {
     id: 25,
-    allletter: 'qolmkjhnbtyhbghj',
-    solution: ['fad', 'jok'],
+    allletter: 'sidkllryeechceti',
+    solution: ['celery', 'thick', 'slide'],
     number: 4,
   },
 ];

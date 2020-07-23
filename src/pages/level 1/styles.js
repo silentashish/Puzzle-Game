@@ -102,4 +102,7 @@ export const styles = ScaledSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  widthLess: {
+    maxWidth: '70%',
+  },
 });

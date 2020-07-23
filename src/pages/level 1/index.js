@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Text, ScrollView, SafeAreaView} from 'react-native';
 import {PuzzleBox, TextInput, Button, AppHeader} from '../../components';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {levelOne, levelTwo, levelThree} from '../../data';
@@ -13,10 +7,6 @@ import {styles} from './styles';
 import {colors} from '../../utils';
 import {showToast} from '../../utils/showAlert';
 import LottieView from 'lottie-react-native';
-
-// time limit of game and total life of game
-const TimeLimit = 60;
-const TotalLife = 3;
 
 const LevelOneActivity = () => {
   //   level is current game level running and problemIndex is current problem position
@@ -28,6 +18,8 @@ const LevelOneActivity = () => {
   const [problemNow, setProblemNow] = useState(levelOne[0]);
   // input value contain value enter by the user
   const [input, setInput] = useState();
+  // time limit is total time to play game
+  const TimeLimit = 180;
   // time is use to track of time for user
   const [time, setTime] = useState(TimeLimit);
   // life is use to calculate how many life is left
@@ -44,6 +36,10 @@ const LevelOneActivity = () => {
   const [failed, setFailed] = useState(false);
   // if accept to start game
   const [started, setStarted] = useState(false);
+  // threshold is minimum number required to pass level
+  const threshold = level === 1 ? 7 : level === 2 ? 10 : 14;
+  // total life of game
+  const TotalLife = 3;
   //   event tracker to check time
   useEffect(() => {
     if (time === 1) {
@@ -57,13 +53,12 @@ const LevelOneActivity = () => {
 
   useEffect(() => {
     if (problemIndex === 5) {
-      if (score > 6) {
+      if (score > threshold - 1) {
         setScore(0);
         GoToNextLevel();
       } else {
-        setFailed(true);
-        setStopTimer(true);
-        setProblemIndex(0);
+        setScore(0);
+        FailedLevel();
       }
     } else {
       setProblemNow(state[problemIndex]);
@@ -74,6 +69,12 @@ const LevelOneActivity = () => {
     setLevel((level) => (level == 3 ? 1 : level + 1));
     setSuccess(true);
     setStopTimer(true);
+  };
+
+  const FailedLevel = () => {
+    setFailed(true);
+    setStopTimer(true);
+    setProblemIndex(0);
   };
 
   useEffect(() => {
@@ -108,7 +109,8 @@ const LevelOneActivity = () => {
   // Event to check if number of anser input is complete or not
   useEffect(() => {
     // reset all value when input given
-    if (oldanswer.length === 2) {
+    const totalAnswer = level === 1 ? 2 : level === 2 ? 3 : 4;
+    if (oldanswer.length === totalAnswer) {
       setProblemIndex((problemIndex) => problemIndex + 1);
       setLife(3);
       setOldAnswer([]);
@@ -180,8 +182,13 @@ const LevelOneActivity = () => {
     return (
       <View style={styles.mainView}>
         <View style={styles.centerElement}>
-          <Text style={styles.bigText}>Level {level - 1}</Text>
+          <Text style={styles.bigText}>Level {level}</Text>
           <Text style={styles.bigText}>Failed</Text>
+          <View style={styles.divider} />
+          <View style={styles.divider} />
+          <Text style={[styles.instruction, styles.widthLess]}>
+            You need to score atleast {threshold} to pass this level
+          </Text>
           <View style={styles.animationBox}>
             <LottieView
               source={require('../../assets/Animations/cancel.json')}
@@ -226,6 +233,9 @@ const LevelOneActivity = () => {
       </View>
     );
 
+  // there will be total of 2 option for level 1, 3 option for level 2 and 4 option for level 5
+  const totalScore = level === 1 ? 10 : level === 2 ? 15 : 20;
+
   return (
     <View style={styles.mainView}>
       <SafeAreaView backgroundColor={colors.secondaryColor} opacity={0.95} />
@@ -238,7 +248,9 @@ const LevelOneActivity = () => {
           </View>
           <View>
             <Text style={styles.timeText}>Score</Text>
-            <Text style={styles.problemIndex}>{score} / 10</Text>
+            <Text style={styles.problemIndex}>
+              {score} / {totalScore}
+            </Text>
           </View>
         </View>
         <PuzzleBox {...problemNow} />
